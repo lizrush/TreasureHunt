@@ -41,7 +41,7 @@ extension Treasure: MKAnnotation{
 }
 
 
-class HistoryTreasure: Treasure {
+final class HistoryTreasure: Treasure {
     let year: Int
     
     init(what: String, year: Int, latitude: Double, longitude: Double)
@@ -56,7 +56,7 @@ class HistoryTreasure: Treasure {
     }
 }
 
-class FactTreasure: Treasure {
+final class FactTreasure: Treasure {
     let fact: String
     
     init(what: String, fact: String, latitude: Double, longitude: Double)
@@ -67,7 +67,7 @@ class FactTreasure: Treasure {
     }
 }
 
-class HQTreasure: Treasure {
+final class HQTreasure: Treasure {
     let company: String
     
     init(company: String, latitude: Double, longitude: Double) {
