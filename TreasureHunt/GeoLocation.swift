@@ -29,3 +29,10 @@ extension GeoLocation {
         return MKMapPointForCoordinate(self.coordinate)
     }
 }
+
+extension GeoLocation: Equatable {
+}
+
+func ==(lhs: GeoLocation, rhs: GeoLocation) -> Bool {
+    return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+}

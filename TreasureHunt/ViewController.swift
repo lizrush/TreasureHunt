@@ -26,6 +26,8 @@ import MapKit
 class ViewController: UIViewController {
     @IBOutlet var mapView : MKMapView!
     var treasures: [Treasure] = []
+    var foundLocations: [GeoLocation] = []
+    var polyline: MKPolyline!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +49,7 @@ class ViewController: UIViewController {
             HQTreasure(company: "Google",
             latitude: 37.422, longitude: -122.084),
         ]
+        
         self.mapView.delegate = self
         self.mapView.addAnnotations(self.treasures)
         
@@ -57,10 +60,45 @@ class ViewController: UIViewController {
         }
         self.mapView.setVisibleMapRect(rectToDisplay, edgePadding:UIEdgeInsetsMake(74, 10, 10, 10), animated: false)
     }
+    
+    func markTreasureAsFound(treasure: Treasure) {
+        if let index = find(self.foundLocations, treasure.location) {
+            let alert = UIAlertController(
+                title: "Oops!",
+                message: "You've already found this treasure (at step \(index + 1))! Try again." ,
+                preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(
+                title: "Ok",
+                style: .Default,
+                handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+            self.foundLocations.append(treasure.location)
+            
+            if self.polyline != nil {
+                self.mapView.removeOverlay(self.polyline)
+            }
+            
+            var coordinates = self.foundLocations.map { $0.coordinate }
+            self.polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+            self.mapView.addOverlay(self.polyline)
+        }
+    }
 
 }
 
 extension ViewController: MKMapViewDelegate {
+    
+    func mapView(mapView: MKMapView!, rendererForOverlay
+        overlay: MKOverlay!) -> MKOverlayRenderer!
+    {
+        if let polylineOverlay = overlay as? MKPolyline {
+            let renderer = MKPolylineRenderer(polyline: polylineOverlay)
+            renderer.strokeColor = UIColor.blueColor()
+            return renderer
+        }
+        return nil
+    }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         if let treasure = annotation as? Treasure {
@@ -106,6 +144,14 @@ extension ViewController: MKMapViewDelegate {
                     mapView.deselectAnnotation(treasure, animated: true)
                     mapView.selectAnnotation(sortedTreasures[1], animated: true)
             })
+        
+        alert.addAction(UIAlertAction(
+                        title: "Found",
+                        style: UIAlertActionStyle.Default) {
+                        action in
+                        self.markTreasureAsFound(treasure)
+                        })
+        
                 self.presentViewController(
                     alert, animated: true, completion: nil)
             }
