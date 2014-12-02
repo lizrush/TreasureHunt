@@ -7,9 +7,9 @@
 //
 
 import Foundation
+import MapKit
 
 class Treasure: NSObject {
-    
     let what: String
     let location: GeoLocation
     
@@ -26,7 +26,18 @@ class Treasure: NSObject {
     }
 }
 
-class HistoryTreasue: Treasure {
+extension Treasure: MKAnnotation{
+    var coordinate: CLLocationCoordinate2D {
+        return self.location.coordinate
+    }
+    
+    var title: String {
+        return self.what
+    }
+}
+
+
+class HistoryTreasure: Treasure {
     let year: Int
     
     init(what: String, year: Int, latitude: Double, longitude: Double)
