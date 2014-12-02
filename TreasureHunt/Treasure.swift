@@ -8,8 +8,13 @@
 
 import Foundation
 
-class Treasure(what: String, latitude: Double, longitude: Double) {
-    self.what       = what
-    self.latitude   = latitude
-    self.longitude  = longitude
+class Treasure: NSObject {
+    
+    let what: String
+    let location: GeoLocation
+    
+    init(what: String, location: GeoLocation) {
+        self.what = what
+        self.location = location
+    }
 }

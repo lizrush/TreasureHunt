@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6E625C2D1A2E2B1E00899FF9 /* Treasure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E625C2C1A2E2B1E00899FF9 /* Treasure.swift */; };
+		6E625C2F1A2E2D6800899FF9 /* GeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E625C2E1A2E2D6800899FF9 /* GeoLocation.swift */; };
 		C982FA1C194DAB5E00EFCAFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C982FA1B194DAB5E00EFCAFD /* AppDelegate.swift */; };
 		C982FA1E194DAB5E00EFCAFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C982FA1D194DAB5E00EFCAFD /* ViewController.swift */; };
 		C982FA21194DAB5E00EFCAFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C982FA1F194DAB5E00EFCAFD /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		6E625C2C1A2E2B1E00899FF9 /* Treasure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Treasure.swift; sourceTree = "<group>"; };
+		6E625C2E1A2E2D6800899FF9 /* GeoLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoLocation.swift; sourceTree = "<group>"; };
 		C982FA16194DAB5E00EFCAFD /* TreasureHunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreasureHunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C982FA1A194DAB5E00EFCAFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C982FA1B194DAB5E00EFCAFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				C982FA1D194DAB5E00EFCAFD /* ViewController.swift */,
 				C982FA1F194DAB5E00EFCAFD /* Main.storyboard */,
 				6E625C2C1A2E2B1E00899FF9 /* Treasure.swift */,
+				6E625C2E1A2E2D6800899FF9 /* GeoLocation.swift */,
 				C982FA22194DAB5E00EFCAFD /* Images.xcassets */,
 				C982FA19194DAB5E00EFCAFD /* Supporting Files */,
 			);
@@ -211,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E625C2F1A2E2D6800899FF9 /* GeoLocation.swift in Sources */,
 				C982FA1E194DAB5E00EFCAFD /* ViewController.swift in Sources */,
 				C982FA1C194DAB5E00EFCAFD /* AppDelegate.swift in Sources */,
 				6E625C2D1A2E2B1E00899FF9 /* Treasure.swift in Sources */,
