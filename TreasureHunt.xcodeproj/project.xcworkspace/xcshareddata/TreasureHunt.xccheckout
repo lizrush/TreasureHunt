@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>830E0B8E-06A6-494F-92C1-6983C2C9476E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TreasureHunt</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2600FE117A776525FE5F2332C0ECD5CF82B273E4</key>
+		<string>github.com:lizrush/TreasureHunt.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TreasureHunt.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2600FE117A776525FE5F2332C0ECD5CF82B273E4</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:lizrush/TreasureHunt.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2600FE117A776525FE5F2332C0ECD5CF82B273E4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2600FE117A776525FE5F2332C0ECD5CF82B273E4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TreasureHunt-Starter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
