@@ -93,6 +93,19 @@ extension ViewController: MKMapViewDelegate {
                     UIAlertAction(
                         title: "OK",
                         style: UIAlertActionStyle.Default, handler: nil))
+        
+        alert.addAction(UIAlertAction(
+            title: "Find Nearest",
+            style: UIAlertActionStyle.Default) { action in
+                var sortedTreasures = self.treasures
+                sortedTreasures.sort {
+                    let distanceA = treasure.location.distanceBetween($0.location)
+                    let distanceB = treasure.location.distanceBetween($1.location)
+                    return distanceA < distanceB
+                }
+                    mapView.deselectAnnotation(treasure, animated: true)
+                    mapView.selectAnnotation(sortedTreasures[1], animated: true)
+            })
                 self.presentViewController(
                     alert, animated: true, completion: nil)
             }
