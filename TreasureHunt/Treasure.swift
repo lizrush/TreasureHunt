@@ -17,4 +17,11 @@ class Treasure: NSObject {
         self.what = what
         self.location = location
     }
+    
+    convenience init(what: String,
+        latitude: Double, longitude: Double)
+    {
+        let location = GeoLocation(latitude: latitude, longitude: longitude)
+        self.init(what: what, location: location)
+    }
 }
