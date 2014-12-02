@@ -60,24 +60,43 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: MKMapViewDelegate { func mapView(mapView: MKMapView!,
-    viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView!
-{
-    if let treasure = annotation as? Treasure {
-        var view = mapView.dequeueReusableAnnotationViewWithIdentifier("pin")
-            as MKPinAnnotationView!
-        if view == nil {
-            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-            view.canShowCallout = true
-            view.animatesDrop = false
-            view.calloutOffset = CGPoint(x: -5, y: 5)
-            view.rightCalloutAccessoryView =
-                UIButton.buttonWithType(.DetailDisclosure) as UIView
-        } else {
-            view.annotation = annotation
+extension ViewController: MKMapViewDelegate {
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        if let treasure = annotation as? Treasure {
+            var view = mapView.dequeueReusableAnnotationViewWithIdentifier("pin") as MKPinAnnotationView!
+            if view == nil {
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+                view.canShowCallout = true
+                view.animatesDrop = false
+                view.calloutOffset = CGPoint(x: -5, y: 5)
+                view.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as UIView
+            } else {
+                view.annotation = annotation
+            }
+            
+            view.pinColor = treasure.pinColor()
+            
+            return view
         }
-        view.pinColor = treasure.pinColor()
-        return view
+        return nil
     }
-    return nil }
+    
+    func mapView(mapView: MKMapView!,
+        annotationView view: MKAnnotationView!,
+        calloutAccessoryControlTapped control: UIControl!)
+    {
+        if let treasure = view.annotation as? Treasure {
+            if let alertable = treasure as? Alertable {
+                let alert = alertable.alert()
+                alert.addAction(
+                    UIAlertAction(
+                        title: "OK",
+                        style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(
+                    alert, animated: true, completion: nil)
+            }
+        }
+    }
 }
+

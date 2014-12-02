@@ -9,6 +9,10 @@
 import Foundation
 import MapKit
 
+@objc protocol Alertable {
+    func alert() -> UIAlertController
+}
+
 class Treasure: NSObject {
     let what: String
     let location: GeoLocation
@@ -80,3 +84,40 @@ final class HQTreasure: Treasure {
         return MKPinAnnotationColor.Green
     }
 }
+
+extension HistoryTreasure: Alertable {
+    func alert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: "History",
+            message: "From \(self.year):\n\(self.what)",
+            preferredStyle: UIAlertControllerStyle.Alert
+        )
+        return alert
+    }
+}
+
+
+extension FactTreasure: Alertable {
+    func alert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: "Fact",
+            message: "\(self.what):\n\(self.fact)",
+            preferredStyle: UIAlertControllerStyle.Alert
+        )
+        return alert
+    }
+}
+
+
+extension HQTreasure: Alertable {
+    func alert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: "Headquarters",
+            message: "The HQ of \(self.company)",
+            preferredStyle: UIAlertControllerStyle.Alert
+        )
+        return alert
+    }
+}
+
+
