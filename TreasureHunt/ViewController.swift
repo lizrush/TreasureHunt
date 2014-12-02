@@ -25,9 +25,9 @@ import MapKit
 
 class ViewController: UIViewController {
     @IBOutlet var mapView : MKMapView!
-    var treasures: [Treasure] = []
-    var foundLocations: [GeoLocation] = []
-    var polyline: MKPolyline!
+    private var treasures: [Treasure] = []
+    private var foundLocations: [GeoLocation] = []
+    private var polyline: MKPolyline!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +61,7 @@ class ViewController: UIViewController {
         self.mapView.setVisibleMapRect(rectToDisplay, edgePadding:UIEdgeInsetsMake(74, 10, 10, 10), animated: false)
     }
     
-    func markTreasureAsFound(treasure: Treasure) {
+   private func markTreasureAsFound(treasure: Treasure) {
         if let index = find(self.foundLocations, treasure.location) {
             let alert = UIAlertController(
                 title: "Oops!",
