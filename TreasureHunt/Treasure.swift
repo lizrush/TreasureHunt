@@ -24,6 +24,10 @@ class Treasure: NSObject {
         let location = GeoLocation(latitude: latitude, longitude: longitude)
         self.init(what: what, location: location)
     }
+    
+    func pinColor() -> MKPinAnnotationColor {
+        return MKPinAnnotationColor.Red
+    }
 }
 
 extension Treasure: MKAnnotation{
@@ -46,6 +50,10 @@ class HistoryTreasure: Treasure {
         let location = GeoLocation(latitude: latitude, longitude: longitude)
         super.init(what: what, location: location)
     }
+    
+    override func pinColor() -> MKPinAnnotationColor {
+        return MKPinAnnotationColor.Purple
+    }
 }
 
 class FactTreasure: Treasure {
@@ -66,5 +74,9 @@ class HQTreasure: Treasure {
         self.company = company
         let location = GeoLocation(latitude: latitude, longitude: longitude)
         super.init(what: company + " headquarters", location: location)
+    }
+    
+    override func pinColor() -> MKPinAnnotationColor {
+        return MKPinAnnotationColor.Green
     }
 }

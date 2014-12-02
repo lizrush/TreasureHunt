@@ -76,6 +76,7 @@ extension ViewController: MKMapViewDelegate { func mapView(mapView: MKMapView!,
         } else {
             view.annotation = annotation
         }
+        view.pinColor = treasure.pinColor()
         return view
     }
     return nil }
