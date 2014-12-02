@@ -47,6 +47,36 @@ class ViewController: UIViewController {
             HQTreasure(company: "Google",
             latitude: 37.422, longitude: -122.084),
         ]
+        self.mapView.delegate = self
+        self.mapView.addAnnotations(self.treasures)
+        
+        let rectToDisplay = self.treasures.reduce(MKMapRectNull) {
+            (mapRect: MKMapRect, treasure: Treasure) -> MKMapRect in
+                let treasurePointRect = MKMapRect(origin: treasure.location.mapPoint, size: MKMapSize(width: 0, height: 0))
+            return MKMapRectUnion(mapRect, treasurePointRect)
+        }
+        self.mapView.setVisibleMapRect(rectToDisplay, edgePadding:UIEdgeInsetsMake(74, 10, 10, 10), animated: false)
     }
 
+}
+
+extension ViewController: MKMapViewDelegate { func mapView(mapView: MKMapView!,
+    viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView!
+{
+    if let treasure = annotation as? Treasure {
+        var view = mapView.dequeueReusableAnnotationViewWithIdentifier("pin")
+            as MKPinAnnotationView!
+        if view == nil {
+            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+            view.canShowCallout = true
+            view.animatesDrop = false
+            view.calloutOffset = CGPoint(x: -5, y: 5)
+            view.rightCalloutAccessoryView =
+                UIButton.buttonWithType(.DetailDisclosure) as UIView
+        } else {
+            view.annotation = annotation
+        }
+        return view
+    }
+    return nil }
 }
